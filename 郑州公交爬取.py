@@ -42,8 +42,10 @@ def main():
     # string = r.text
     tree = etree.HTML(r.text)
     num_list = tree.xpath('//div[@class="bus_kt_r1"]/a/@href')
+    zimu_list = tree.xpath('//div[@class="bus_kt_r2"]/a/@href')
+    gongjiaolist = num_list + zimu_list
     fp = open('郑州数字公交.txt','w',encoding='utf8')
-    for num in num_list:
+    for num in gongjiaolist:
         print('正在下载第{}页'.format(num))
         time.sleep(2)
         # 拼接数字开头的url
